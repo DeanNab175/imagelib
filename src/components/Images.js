@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Images(props) {
 
     const randomNum = (min, max) => {
@@ -15,7 +17,7 @@ function Images(props) {
         { 
             props.images.map((image) => {
                 return(
-                    <div className={"image-gallery-item w-" + randomNum(1,2) + " h-" + randomNum(1,2)} key={image.id}>
+                    <div className={"image-gallery-item w-" + randomNum(1,2)/*  + " h-" + randomNum(1,2) */} key={image.id}>
                         <div className="image-wrapper">
                             <img src={image.largeImageURL} alt={image.tags} />
                         </div>

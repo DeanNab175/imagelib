@@ -35,7 +35,6 @@ body {
 }
 
 header {
-    height: 250px;
     background: rgb(9,172,34);
     background: linear-gradient(180deg, rgba(9,172,34,1) 0%, rgba(133,198,13,1) 100%);
     margin-bottom: 2rem;
@@ -45,6 +44,7 @@ header {
     justify-content: center;
     color: #fff;
     text-align: center;
+    padding: 2rem 0 3rem;
 }
 
 header > div {
@@ -55,6 +55,21 @@ header h1 {
     font-size: 3rem;
     line-height: 1;
     margin: 0 0 1rem;
+}
+
+header p a {
+    display: block;
+    text-decoration: none;
+    font-size: .6rem;
+    color: #fff;
+    margin: .5rem 0;
+    font-style: italic;
+}
+
+header p a img {
+    margin-left: .5rem;
+    position: relative;
+    top: 0.1rem;
 }
 
 .search {
@@ -131,6 +146,44 @@ header h1 {
     bottom: 0;
     opacity: 1;
     visibility: visible;
+}
+
+.pagination-wrapper {
+    margin: 2rem 0 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-wrapper li {
+    list-style: none;
+    margin: 0 .25rem;
+}
+
+.pagination-wrapper li a {
+    padding: .5rem .5rem;
+    font-size: .7rem;
+    line-height: 1;
+    display: inline-block;
+    cursor: pointer;
+    background-color: rgba(133,198,13,.3);
+    border-radius: .2rem;
+    transition: background-color .2s ease-in-out;
+}
+
+.pagination-wrapper li a:hover {
+    background-color: rgba(133,198,13,.7);
+}
+
+.pagination-wrapper li.selected a {
+    background-color: rgba(133,198,13,.9);
+}
+
+.pagination-wrapper li.disabled a {
+    opacity: .5;
+    background-color: rgba(25, 38, 2, 0.9);
+    cursor: not-allowed;
 }
 
 @media screen and (max-width: 500px) {
