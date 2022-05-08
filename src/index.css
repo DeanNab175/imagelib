@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
+/*
+ General styles
+*/
 body {
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -34,6 +37,9 @@ body {
     grid-row: span 3;
 }
 
+/*
+ Header
+*/
 header {
     background: rgb(9,172,34);
     background: linear-gradient(180deg, rgba(9,172,34,1) 0%, rgba(133,198,13,1) 100%);
@@ -72,6 +78,9 @@ header p a img {
     top: 0.1rem;
 }
 
+/*
+ Search
+*/
 .search {
     margin: 2rem 0 0;
 }
@@ -85,6 +94,9 @@ header p a img {
     box-shadow: 0px 0px 16px 0 rgba(0,0,0,0.3);
 }
 
+/*
+ Image gallery
+*/
 .image-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -148,6 +160,9 @@ header p a img {
     visibility: visible;
 }
 
+/*
+ Pagination
+*/
 .pagination-wrapper {
     margin: 2rem 0 1rem;
     padding: 0;
@@ -186,6 +201,40 @@ header p a img {
     cursor: not-allowed;
 }
 
+/*
+ Details page
+*/
+.image-details {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.image-details .image-wrap img {
+    max-width: 100%;
+}
+
+.image-details .user-details {
+    display: flex;
+    align-items: center;
+}
+
+.image-details .user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.image-details .user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*
+ Media queries
+*/
 @media screen and (max-width: 500px) {
     .image-gallery {
         grid-template-columns: repeat(1, 1fr);

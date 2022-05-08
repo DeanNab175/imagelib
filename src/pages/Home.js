@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Images from "../components/Images"
 import Search from "../components/Search"
 import ReactPaginate from "react-paginate"
+import Header from "../components/Header"
 
 function Home() {
   const [searched, setSearched] = useState('')
@@ -28,12 +29,12 @@ function Home() {
         setImages(JSON.parse(cachedImages))
         setTotal(JSON.parse(cachedTotal))
     } else {
-        const response = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searched}&image_type=photo&per_page=${perPage}&page=${pageNumber}`)
+        const response = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${encodeURIComponent(searched)}&image_type=photo&per_page=${perPage}&page=${pageNumber}`)
         const data = await response.json()
         localStorage.setItem('images', JSON.stringify(data.hits))
         setImages(data.hits)
         localStorage.setItem('total', JSON.stringify(data.totalHits))
-        setTotal(data.totalHits)
+        setTotal(parseInt(data.totalHits))
     }
   }
 
@@ -50,17 +51,7 @@ function Home() {
 
   return (
     <div className="container">
-      <header>
-        <div>
-          <h1>Imagelib</h1>
-          <p>Search all your images.
-            <a href="https://pixabay.com/" target="_blank">
-              Credit to <img src="https://pixabay.com/static/img/logo.png" alt="Pixabay" width="60" />
-            </a>
-          </p>
-          <Search onSubmit={onSubmitHandler} />
-        </div>
-      </header>
+      <Header onSubmit={onSubmitHandler} />
       <Images images={images} searched={searched} />
       <ReactPaginate
         nextLabel="next >"
