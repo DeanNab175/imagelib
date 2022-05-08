@@ -109,16 +109,22 @@ header h1 {
     left: 0;
     right: 0;
     padding: 0.7rem 0.5rem;
-    color: #fff;
-    font-size: .7rem;
-    line-height: 1;
     background: rgb(37,2,20);
     background: linear-gradient(180deg, rgba(37,2,20,0) 0%, rgba(37,2,20,0.7) 100%);
-    text-transform: capitalize;
     z-index: 4;
     opacity: 0;
     visibility: hidden;
     transition: all .3s ease-in-out;
+}
+
+.image-gallery-item .text-wrapper span {
+    color: #fff;
+    font-size: .7rem;
+    line-height: 1;
+    text-transform: capitalize;
+    margin-right: .5rem;
+    white-space: no-wrap;
+    display: inline-block;
 }
 
 .image-gallery-item:hover .text-wrapper {
