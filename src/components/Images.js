@@ -14,7 +14,8 @@ function Images(props) {
 
     return (
     <section className="image-gallery">
-        { 
+        {props.loading && <p>loading...</p>}
+        { props.images &&
             props.images.map((image) => {
                 return(
                     <div className={"image-gallery-item w-" + randomNum(1,2)/*  + " h-" + randomNum(1,2) */} key={image.id}>

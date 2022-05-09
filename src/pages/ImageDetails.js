@@ -6,14 +6,15 @@ function ImageDetails() {
     const params = useParams()
     const [details, setDetails] = useState({})
 
-    const getImageDetails = async () => {
-        const data = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&id=${params.id}`)
-        const detailsData = await data.json()
-        setDetails(detailsData.hits[0])
-        console.log(detailsData.hits[0]);
-    }
-
+    
     useEffect(() => {
+        const getImageDetails = async () => {
+            const data = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&id=${params.id}`)
+            const detailsData = await data.json()
+            setDetails(detailsData.hits[0])
+            console.log(detailsData.hits[0]);
+        }
+
         getImageDetails()
     }, [params.id])
 
