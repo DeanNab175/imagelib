@@ -119,7 +119,8 @@ header p a img {
     overflow: hidden;
 }
 
-.image-gallery-item .image-wrapper:hover {
+.image-gallery-item .image-wrapper:hover,
+.image-gallery-item .image-wrapper:focus {
     cursor: pointer;
 }
 
@@ -154,7 +155,8 @@ header p a img {
     display: inline-block;
 }
 
-.image-gallery-item:hover .text-wrapper {
+.image-gallery-item:hover .text-wrapper,
+.image-gallery-item:focus .text-wrapper {
     bottom: 0;
     opacity: 1;
     visibility: visible;
@@ -177,17 +179,18 @@ header p a img {
 }
 
 .pagination-wrapper li a {
-    padding: .5rem .5rem;
+    padding: .5rem;
     font-size: .7rem;
     line-height: 1;
     display: inline-block;
     cursor: pointer;
-    background-color: rgba(133,198,13,.3);
+    border: solid 1px #000;
     border-radius: .2rem;
     transition: background-color .2s ease-in-out;
 }
 
-.pagination-wrapper li a:hover {
+.pagination-wrapper li a:hover,
+.pagination-wrapper li a:focus {
     background-color: rgba(133,198,13,.7);
 }
 
@@ -204,9 +207,37 @@ header p a img {
 /*
  Details page
 */
+.back {
+    font-size: .7rem;
+    line-height: 1;
+    color: rgb(9,172,34);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.back a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+}
+
+.back a svg {
+    margin-right: .5rem;
+}
+
+.back a:hover,
+.back a:focus {
+    text-decoration: underline;
+}
+
 .image-details {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .image-details .image-wrap img {
@@ -223,6 +254,8 @@ header p a img {
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
+    margin-right: 1rem;
+    border: solid 2px #000;
 }
 
 .image-details .user-image img {
@@ -231,10 +264,36 @@ header p a img {
     object-fit: cover;
 }
 
+.image-details .info-wrap {
+    padding-left: 2rem;
+}
+
+.image-details .info-wrap p .label {
+    font-size: .8rem;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.image-details .info-wrap p {
+    font-size: .85rem;
+    line-height: 1;
+    font-weight: 400;
+}
+
 
 /*
  Media queries
 */
+@media screen and (max-width: 767px) {
+    header > div {
+        width: 65%;
+    }
+
+    .image-details .info-wrap {
+        padding-left: 0;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .image-gallery {
         grid-template-columns: repeat(1, 1fr);
@@ -244,10 +303,13 @@ header p a img {
     .w-1, .w-2 {
         grid-column: span 1;
     }
-}
 
-@media screen and (max-width: 767px) {
-    header > div {
-        width: 65%;
+    .image-details {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination-wrapper li a {
+        padding: .3rem;
+        font-size: .5rem;
     }
 }
