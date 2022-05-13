@@ -19,13 +19,20 @@ function Home() {
     removeLocalstorageItem('images')
     
     const getImages = async () => {
+      // store images and total in localstorage
       const cachedImages = localStorage.getItem('images')
       const cachedTotal = localStorage.getItem('total')
   
+      // if we do have localstorage set then
+      // update images and total state variable
       if(cachedImages && cachedTotal) {
           setImages(JSON.parse(cachedImages))
           setTotal(JSON.parse(cachedTotal))
       } else {
+          /**
+           * fetch images from api
+           * and update the state
+           */
           const response = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${encodeURIComponent(searched)}&image_type=photo&per_page=${perPage}&page=${pageNumber}`)
           const data = await response.json()
           localStorage.setItem('images', JSON.stringify(data.hits))
@@ -39,12 +46,15 @@ function Home() {
   }, [searched, pageNumber])
 
 
+  // remove item from localstorage
   const removeLocalstorageItem = (item) => {
     localStorage.removeItem(item)
   }
 
+  // calculate number of pages
   const pageCount = Math.ceil(total/perPage)
 
+  // handle click on pagination and set selected page
   const handlePageClick = ({ selected }) => {
     console.log(selected + 1)
     setPageNumber(selected + 1)

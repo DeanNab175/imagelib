@@ -2,10 +2,12 @@ import { Link } from "react-router-dom"
 
 function Images(props) {
 
+    // generate random numbers
     const randomNum = (min, max) => {
         return Math.floor((Math.random() * max) + min)
     }
 
+    // split text separated by comma
     const splitText = (separator, text) => {
         const textArr = []
         textArr.push(text.split(separator))
@@ -16,9 +18,9 @@ function Images(props) {
     <section className="image-gallery">
         {props.loading && <p>loading...</p>}
         { props.images &&
-            props.images.map((image) => {
+            props.images.map((image, index) => {
                 return(
-                    <div className={"image-gallery-item w-" + randomNum(1,2)/*  + " h-" + randomNum(1,2) */} key={image.id}>
+                    <div className={"image-gallery-item w-" + randomNum(1,2)} key={image.id} data-testid={`image-gallery-item-${index}`}>
                         <Link to={"/details/" + image.id}>
                             <div className="image-wrapper">
                                 <img src={image.largeImageURL} alt={image.tags} />

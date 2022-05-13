@@ -7,18 +7,18 @@ function Search(props) {
         e.preventDefault()
         props.onSubmit(input)
     }
-  return (
-    <div className="search">
-        <form onSubmit={onSubmitHandler}>
-            <input 
-                type="text" 
-                placeholder="Search an image"
-                value={input}
-                onChange={e => setInput(e.target.value) } 
-                />
-        </form>
-    </div>
-  )
+    return (
+      <div className="search">
+          <form onSubmit={onSubmitHandler}>
+              <input 
+                  type="text" 
+                  placeholder="Search an image"
+                  value={input}
+                  onChange={e => setInput(e.target.value) } 
+                  />
+          </form>
+      </div>
+    )
 }
 
 export default Search

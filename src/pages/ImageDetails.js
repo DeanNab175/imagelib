@@ -10,6 +10,7 @@ function ImageDetails() {
 
     
     useEffect(() => {
+        // get the image details based on id
         const getImageDetails = async () => {
             const data = await fetch(`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&id=${params.id}`)
             const detailsData = await data.json()
@@ -20,6 +21,7 @@ function ImageDetails() {
         getImageDetails()
     }, [params.id])
 
+    // convert number to billions, millions, thousands
     const convertNum = (labelValue) => {
 
         // Nine Zeroes for Billions
@@ -39,6 +41,7 @@ function ImageDetails() {
     
     }
 
+    // convert number to bytes
     const formatBytes = (bytes, decimals = 2) => {
         if (bytes === 0) return '0 Bytes';
     
