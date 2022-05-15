@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Images from '../Images';
+import Home from '../Home';
 
-const MockedImages = ({images, searched}) => {
+const MockedImages = () => {
     return (
         <BrowserRouter>
-            <Images images={images} searched={searched} />
+            <Home />
         </BrowserRouter>
     )
 }
@@ -13,10 +13,17 @@ const MockedImages = ({images, searched}) => {
 describe("Images", () => {
     test('should render an image', async () => {
       render(
-        <MockedImages images={[]} searched=""/>
+        <MockedImages />
       );
-      screen.debug()
       const imageDivElement = await screen.findByTestId(/image-gallery-item-0/i);
       expect(imageDivElement).toBeInTheDocument();
+    });
+
+    test('should render 30 images', async () => {
+        render(
+          <MockedImages />
+        );
+        const imageDivElements = await screen.findAllByTestId(/image-gallery-item/i);
+        expect(imageDivElements.length).toBe(30);
     });
 })
