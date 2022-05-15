@@ -56,7 +56,6 @@ function Home() {
 
   // handle click on pagination and set selected page
   const handlePageClick = ({ selected }) => {
-    console.log(selected + 1)
     setPageNumber(selected + 1)
   }
 
